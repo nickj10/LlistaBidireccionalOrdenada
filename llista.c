@@ -2,6 +2,24 @@
 
 Llista LLISTA_crea() {
 	Llista l;
+	
+	l.pri = (Node*)malloc(sizeof(Node));
+	if (l.pri == NULL) {
+		printf ("\n Error, node cannot be created.");
+	}
+	else {
+		l.ult = (Node*)malloc(sizeof(Node));
+		if (l.ult == NULL) {
+			printf ("\nError, node cannot be created.");
+		}
+		else {
+			l.pri->sig = l.ult;
+			l.pri->ant = NULL;
+			l.ult->ant = l.pri;
+			l.ult->sig = NULL;
+			l.pdi = l.ult;
+		}
+	}
 
 	return l;
 }
