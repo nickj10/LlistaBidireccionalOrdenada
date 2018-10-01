@@ -69,7 +69,14 @@ int LLISTA_buida (Llista l) {
 }
 
 void LLISTA_destrueix (Llista *l) {
-
+	Node *aux;
+	while (l->pri != NULL) {
+		aux = l->pri;
+		l->pri = l->pri->sig;
+		free (aux);
+	}
+	l->ult = NULL;
+	l->pdi = NULL;
 }
 
 
