@@ -61,11 +61,11 @@ int LLISTA_inici (Llista l) {
 }
 
 int LLISTA_final (Llista l) {
-	
+
 }
 
 int LLISTA_buida (Llista l) {
-
+	return l.pri->sig == l.ult;
 }
 
 void LLISTA_destrueix (Llista *l) {
