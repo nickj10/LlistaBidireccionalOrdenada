@@ -1,6 +1,9 @@
 #ifndef _LLISTA_H
 #define _LLISTA_H
 
+#include <stdio.h>
+#include <stdlib.h>
+
 typedef struct N {
 	int e;
 	struct N *sig;
