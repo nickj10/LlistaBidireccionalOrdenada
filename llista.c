@@ -57,7 +57,7 @@ void LLISTA_vesFinal (Llista *l) {
 }
 
 int LLISTA_inici (Llista l) {
-
+	return l.pdi == l.pri; 
 }
 
 int LLISTA_final (Llista l) {
