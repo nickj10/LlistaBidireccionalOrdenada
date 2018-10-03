@@ -1,4 +1,7 @@
 #include <stdio.h>
+#include "llista.h"
+#include "llista.h"
+#include "llista.h"
 
 int main() {
 	// Used for testing the Llista module
