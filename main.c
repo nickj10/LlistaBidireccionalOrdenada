@@ -1,7 +1,5 @@
 #include <stdio.h>
 #include "llista.h"
-#include "llista.h"
-#include "llista.h"
 
 int main() {
 	// Used for testing the Llista module
@@ -10,13 +8,14 @@ int main() {
 
 	numeros = LLISTA_crea();
 	
-	printf ("Enter an integer: ");
-	scanf ("%d", &num);
+	while (LLISTA_final(numeros)) {
+		printf ("Enter an integer: ");
+		scanf ("%d", &num);
 
-	// Insert the number entered by user to the list of numbers
-	LLISTA_insertaDelante (&numeros, num);
+		// Insert the number entered by user to the list of numbers
+		LLISTA_insertaDelante (&numeros, num);
 
-
+	}
 	// Destroy the list
 	LLISTA_destrueix (&numeros);
 
