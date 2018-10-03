@@ -14,7 +14,7 @@ int main() {
 	scanf ("%d", &num);
 
 	// Insert the number entered by user to the list of numbers
-	LLISTA_insertaDelante (&numeros, num);
+	LLISTA_insertDavant (&numeros, num);
 
 
 	// Destroy the list
