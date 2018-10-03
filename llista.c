@@ -49,7 +49,7 @@ void LLISTA_retrocedeix (Llista *l) {
 }
 
 void LLISTA_vesInici (Llista *l) {
-
+	l->pdi = l->pri->sig;
 }
 
 void LLISTA_vesFinal (Llista *l) {
