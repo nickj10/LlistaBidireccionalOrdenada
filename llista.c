@@ -53,7 +53,7 @@ void LLISTA_vesInici (Llista *l) {
 }
 
 void LLISTA_vesFinal (Llista *l) {
-
+	l->pdi = l->ult->ant;
 }
 
 int LLISTA_inici (Llista l) {
