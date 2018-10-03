@@ -61,7 +61,7 @@ int LLISTA_inici (Llista l) {
 }
 
 int LLISTA_final (Llista l) {
-	return l.pdi == l.pri;
+	return l.pdi == l.ult;
 }
 
 int LLISTA_buida (Llista l) {
