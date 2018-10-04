@@ -33,7 +33,16 @@ void LLISTA_insertDarrere (Llista *l, int e) {
 }
 
 int LLISTA_consulta (Llista l) {
-
+	int e;
+	
+	if (l.pdi == l.pri || l.pdi == l.ult) {
+		e = -1;
+		printf ("\nError, cannot get the element inside the node.\n");
+	}
+	else {
+		e = l.pdi->e;
+	}
+	return e;
 }
 
 void LLISTA_elimina (Llista *l) {
