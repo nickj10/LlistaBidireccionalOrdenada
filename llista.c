@@ -46,7 +46,23 @@ void LLISTA_insertDavant (Llista *l, int e) {
 }
 
 void LLISTA_insertDarrere (Llista *l, int e) {
-
+	Node *aux;
+	if (l->pdi->sig == NULL) {
+		printf ("\nError, cannot insert behind node.\n");
+	}
+	else {
+		aux = (Node*)malloc(sizeof(Node));
+		if (aux == NULL) {
+			printf ("\nError, cannot allocate memory for auxiliar node.\n");
+		}
+		else {
+			aux->e = e;
+			aux->sig = l->pdi->sig;
+			aux->ant = l->pdi;
+			l->pdi->sig->ant = aux;
+			l->pdi->sig = aux;
+		}
+	}
 }
 
 int LLISTA_consulta (Llista l) {
