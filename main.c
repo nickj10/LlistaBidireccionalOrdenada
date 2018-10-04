@@ -17,14 +17,17 @@ int main() {
 		scanf ("%d", &num);
 
 		// Insert the number entered by user to the list of numbers
-		LLISTA_insertDarrere (&numeros, num);
+		LLISTA_insertDavant (&numeros, num);
+		i++;
 	}
 	
+	i = 0;	
 	LLISTA_vesInici (&numeros);
 	while (!LLISTA_final(numeros)) {
 		read = LLISTA_consulta(numeros);
 		printf ("Num %d: %d\n", i+1, read);
 		LLISTA_avanca(&numeros);
+		i++;
 	}
 	
 	// Destroy the list
