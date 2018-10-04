@@ -37,7 +37,17 @@ int LLISTA_consulta (Llista l) {
 }
 
 void LLISTA_elimina (Llista *l) {
-
+	Node *aux; 
+	if (l->pdi == l->pri || l->pdi == l->ult) {
+		printf ("\nError, cannot delete node.\n"); 
+	}
+	else {
+		aux = l->pdi; 
+		aux->ant->sig = aux->sig; 
+		aux->sig->ant = aux->ant;
+		l->pdi = l->pdi->sig;
+		free (aux);
+	}
 }
 
 void LLISTA_avanca (Llista *l) {
