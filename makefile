@@ -9,4 +9,5 @@ llista.o: llista.c llista.h
 exercici1: main.o llista.o
 	gcc main.o llista.o -o exercici1
 
-clean: rm *.o
+clean: 
+	rm -f *.o exercici1
