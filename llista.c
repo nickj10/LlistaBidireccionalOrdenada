@@ -25,27 +25,89 @@ Llista LLISTA_crea() {
 }
 
 void LLISTA_insertDavant (Llista *l, int e) {
-	
+	Node *aux;
+	if (l->pdi->ant == NULL) {
+		printf ("\nError, cannot insert the element in front.\n");
+	}	
+	else {
+		aux = (Node*)malloc(sizeof(Node));
+		if (aux == NULL) {
+			printf ("\nError, cannot allocate memory for auxiliar node.\n");
+		}
+		else {
+			aux->e = e;
+			aux->sig = l->pdi->ant;
+			aux->ant = l->pdi->ant;
+			l->pdi->ant->sig = aux;
+			l->pdi->ant = aux;
+			//OBS: We don't have to mode PDI to maintain it
+		}
+	}
 }
 
 void LLISTA_insertDarrere (Llista *l, int e) {
-
+	Node *aux;
+	if (l->pdi->sig == NULL) {
+		printf ("\nError, cannot insert behind node.\n");
+	}
+	else {
+		aux = (Node*)malloc(sizeof(Node));
+		if (aux == NULL) {
+			printf ("\nError, cannot allocate memory for auxiliar node.\n");
+		}
+		else {
+			aux->e = e;
+			aux->sig = l->pdi->sig;
+			aux->ant = l->pdi;
+			l->pdi->sig->ant = aux;
+			l->pdi->sig = aux;
+		}
+	}
 }
 
 int LLISTA_consulta (Llista l) {
-
+	int e;
+	
+	if (l.pdi == l.pri || l.pdi == l.ult) {
+		e = -1;
+		printf ("\nError, cannot get the element inside the node.\n");
+	}
+	else {
+		e = l.pdi->e;
+	}
+	return e;
 }
 
 void LLISTA_elimina (Llista *l) {
-
+	Node *aux; 
+	if (l->pdi == l->pri || l->pdi == l->ult) {
+		printf ("\nError, cannot delete node.\n"); 
+	}
+	else {
+		aux = l->pdi; 
+		aux->ant->sig = aux->sig; 
+		aux->sig->ant = aux->ant;
+		l->pdi = l->pdi->sig;
+		free (aux);
+	}
 }
 
 void LLISTA_avanca (Llista *l) {
-
+	if (l->pdi == l->ult) { 
+		printf ("\nError, cannot move forward.\n"); 
+	} 
+	else {
+		l->pdi = l->pdi->sig; 
+	}
 }
 
 void LLISTA_retrocedeix (Llista *l) {
-
+	if (l->pdi == l->pri) {
+		printf ("\nError,cannot move backwards.\n");
+	}
+	else {
+		l->pdi=l->pdi->ant;
+	}
 }
 
 void LLISTA_vesInici (Llista *l) {
