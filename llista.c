@@ -25,7 +25,24 @@ Llista LLISTA_crea() {
 }
 
 void LLISTA_insertDavant (Llista *l, int e) {
-	
+	Node *aux;
+	if (l->pdi->ant == NULL) {
+		printf ("\nError, cannot insert the element in front.\n");
+	}	
+	else {
+		aux = (Node*)malloc(sizeof(Node));
+		if (aux == NULL) {
+			printf ("\nError, cannot allocate memory for auxiliar node.\n");
+		}
+		else {
+			aux->e = e;
+			aux->sig = l->pdi->ant;
+			aux->ant = l->pdi->ant;
+			l->pdi->ant->sig = aux;
+			l->pdi->ant = aux;
+			//OBS: We don't have to mode PDI to maintain it
+		}
+	}
 }
 
 void LLISTA_insertDarrere (Llista *l, int e) {
