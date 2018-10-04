@@ -41,7 +41,12 @@ void LLISTA_elimina (Llista *l) {
 }
 
 void LLISTA_avanca (Llista *l) {
-
+	if (l->pdi == l->ult) { 
+		printf ("\nError, cannot move forward.\n"); 
+	} 
+	else {
+		l->pdi = l->pdi->sig; 
+	}
 }
 
 void LLISTA_retrocedeix (Llista *l) {
