@@ -45,7 +45,12 @@ void LLISTA_avanca (Llista *l) {
 }
 
 void LLISTA_retrocedeix (Llista *l) {
-
+	if (l->pdi == l->pri) {
+		printf ("\nError,cannot move backwards.\n");
+	}
+	else {
+		l->pdi=l->pdi->ant;
+	}
 }
 
 void LLISTA_vesInici (Llista *l) {
