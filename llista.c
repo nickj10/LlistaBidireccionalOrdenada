@@ -49,23 +49,23 @@ void LLISTA_retrocedeix (Llista *l) {
 }
 
 void LLISTA_vesInici (Llista *l) {
-
+	l->pdi = l->pri->sig;
 }
 
 void LLISTA_vesFinal (Llista *l) {
-
+	l->pdi = l->ult->ant;
 }
 
 int LLISTA_inici (Llista l) {
-
+	return l.pdi == l.pri; 
 }
 
 int LLISTA_final (Llista l) {
-	
+	return l.pdi == l.ult;
 }
 
 int LLISTA_buida (Llista l) {
-
+	return l.pri->sig == l.ult;
 }
 
 void LLISTA_destrueix (Llista *l) {
