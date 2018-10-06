@@ -107,7 +107,7 @@ void LLISTA_insertDavant (Llista *l, int e) {
 			LLISTA_vesInici (l);
 			read = LLISTA_consulta (*l);
 			LLISTA_avanca (l);
-			if (LLISTA_final(*l)
+			if (LLISTA_final(*l))
 				read2 = read;
 			else
 				read2 = LLISTA_consulta (*l);
