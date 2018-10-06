@@ -27,7 +27,8 @@ Llista LLISTA_crea() {
 
 void LLISTA_insertDavant (Llista *l, int e) {
 	Node *aux;
-	if (l->pdi->ant == NULL) {
+	// If PDI is pointing at the last node, ERROR
+	if (l->pdi == l->ult) {
 		printf ("\nError, cannot insert the element in front.\n");
 	}	
 	else {
@@ -37,11 +38,10 @@ void LLISTA_insertDavant (Llista *l, int e) {
 		}
 		else {
 			aux->e = e;
-			aux->sig = l->pdi->ant;
-			aux->ant = l->pdi->ant;
-			l->pdi->ant->sig = aux;
-			l->pdi->ant = aux;
-			//OBS: We don't have to mode PDI to maintain it
+			aux->sig = l->pdi->sig;
+			aux->ant = l->pdi;
+			l->pdi->sig->ant = aux;
+			l->pdi->sig = aux;
 		}
 	}
 }
