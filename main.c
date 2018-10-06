@@ -28,15 +28,27 @@ int main() {
 
 	printf ("\nTEST 2: Insert to the right (after PDI)\n");
 		
+	printf ("Enter number to insert to the right: ");
+	scanf ("%d", &num);
+	LLISTA_insertDarrere (&numeros, num);
+
+	printf ("\nCorrect, we cannot add another element to the list because PDI is at the start of the list. Move forward twice.\n");
+	LLISTA_avanca (&numeros);
+	LLISTA_avanca (&numeros);
+	
 	while (!print_ok) {
-		printf ("Enter number to insert to the right: ");
+		printf ("\nEnter number to insert to the right: ");
 		scanf ("%d", &num);
 
 		LLISTA_insertDarrere (&numeros, num);
 		
+		LLISTA_mostrarElements (numeros);
+		
 		scanf ("%c", &buff);	
-		printf ("Do you want to enter another number? [Y/N] ");
+		printf ("\nDo you want to enter another number? [Y/N] ");
 		scanf ("%c", &option);
+
+
 		if (option == 'Y' || option == 'y') {
 			print_ok = 0;
 		}
@@ -45,8 +57,8 @@ int main() {
 		}
 
 	}
-
-	LLISTA_mostrarElements (numeros);
+	
+	printf ("\n");
 
 	// Destroy the list
 	LLISTA_destrueix (&numeros);
