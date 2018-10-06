@@ -119,6 +119,7 @@ void LLISTA_insertDavant (Llista *l, int e) {
 						LLISTA_retrocedeix (l);
 						trobat = 1;
 					}
+				}
 			}
 		}
 		aux->e = e;
