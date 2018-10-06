@@ -25,48 +25,6 @@ Llista LLISTA_crea() {
 	return l;
 }
 
-void LLISTA_insertDavant (Llista *l, int e) {
-	Node *aux;
-	// If PDI is pointing at the last node, ERROR
-	if (l->pdi == l->ult) {
-		printf ("\nError, cannot insert the element in front.\n");
-	}	
-	else {
-		aux = (Node*)malloc(sizeof(Node));
-		if (aux == NULL) {
-			printf ("\nError, cannot allocate memory for auxiliar node.\n");
-		}
-		else {
-			aux->e = e;
-			aux->sig = l->pdi->sig;
-			aux->ant = l->pdi;
-			l->pdi->sig->ant = aux;
-			l->pdi->sig = aux;
-		}
-	}
-}
-
-void LLISTA_insertDarrere (Llista *l, int e) {
-	Node *aux;
-// If PDI is pointing at first node, ERROR
-	if (l->pdi == l->pri) {
-		printf ("\nError, cannot insert behind node.\n");
-	}
-	else {
-		aux = (Node*)malloc(sizeof(Node));
-		if (aux == NULL) {
-			printf ("\nError, cannot allocate memory for auxiliar node.\n");
-		}
-		else {
-			aux->e = e;
-			aux->sig = l->pdi;
-			aux->ant = l->pdi->ant;
-			l->pdi->ant->sig = aux;
-			l->pdi->ant = aux;
-		}
-	}
-}
-
 int LLISTA_consulta (Llista l) {
 	int e;
 	
@@ -130,6 +88,63 @@ int LLISTA_final (Llista l) {
 
 int LLISTA_buida (Llista l) {
 	return l.pri->sig == l.ult;
+}
+
+void LLISTA_insertDavant (Llista *l, int e) {
+	Node *aux;
+	int read, read2;
+
+	// If PDI is pointing at the last node, ERROR
+	if (l->pdi == l->ult) {
+		printf ("\nError, cannot insert the element in front.\n");
+	}	
+	else {
+		aux = (Node*)malloc(sizeof(Node));
+		if (aux == NULL) {
+			printf ("\nError, cannot allocate memory for auxiliar node.\n");
+		}
+		else {
+			LLISTA_vesInici (l);
+			read = LLISTA_consulta (*l);
+			LLISTA_avanca (l);
+			if (LLISTA_final(*l)
+				read2 = read;
+			else
+				read2 = LLISTA_consulta (*l);
+			while (read <= read2 && !LLISTA_final (*l)) {
+				LLISTA_avanca (l);
+				read = read2;
+				read2 = LLISTA_consulta(*l);
+			}
+			aux->e = e;
+			aux->sig = l->pdi->sig;
+			aux->ant = l->pdi;
+			l->pdi->sig->ant = aux;
+			l->pdi->sig = aux;
+		}
+	}
+}
+
+void LLISTA_insertDarrere (Llista *l, int e) {
+	Node *aux;
+	int read;
+	// If PDI is pointing at first node, ERROR
+	if (l->pdi == l->pri) {
+		printf ("\nError, cannot insert behind node.\n");
+	}
+	else {
+		aux = (Node*)malloc(sizeof(Node));
+		if (aux == NULL) {
+			printf ("\nError, cannot allocate memory for auxiliar node.\n");
+		}
+		else {
+			aux->e = e;
+			aux->sig = l->pdi;
+			aux->ant = l->pdi->ant;
+			l->pdi->ant->sig = aux;
+			l->pdi->ant = aux;
+		}
+	}
 }
 
 void LLISTA_destrueix (Llista *l) {
