@@ -29,5 +29,6 @@ int LLISTA_inici (Llista l);
 int LLISTA_final (Llista l);
 int LLISTA_buida (Llista l);
 void LLISTA_destrueix (Llista *l);
+void LLISTA_mostrarElements (Llista l);
 
 #endif

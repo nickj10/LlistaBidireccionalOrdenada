@@ -143,4 +143,14 @@ void LLISTA_destrueix (Llista *l) {
 	l->pdi = NULL;
 }
 
+void LLISTA_mostrarElements (Llista l) {
+	int read = 0;
 
+	LLISTA_vesInici (&l);
+	while (!LLISTA_final(l)) {
+		read = LLISTA_consulta(l);
+		printf ("List of numbers: ");
+		printf ("%d ", read);
+		LLISTA_avanca(&l);
+	}
+}
