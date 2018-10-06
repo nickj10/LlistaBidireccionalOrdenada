@@ -4,7 +4,7 @@
 int main() {
 	// Used for testing the Llista module
 	Llista numeros;
-	int num = 0;
+	int num = 0, read = 0;
 	int i = 0, count = 0;
 	int print_ok = 0;
 	char option, buff;
@@ -26,18 +26,14 @@ int main() {
 	}
 	
 
-	printf ("\nTEST 2: Insert to the right (after PDI)\n");
+	printf ("\nTEST 2: Insert to the left (before PDI)\n");
 		
 	printf ("Enter number to insert to the right: ");
 	scanf ("%d", &num);
-	LLISTA_insertDavant (&numeros, num);
+	LLISTA_insertDarrere (&numeros, num);
 
-	//printf ("\nCorrect, we cannot add another element to the list because PDI is at the start of the list. Move forward twice.\n");
-	//LLISTA_avanca (&numeros);
-	//LLISTA_avanca (&numeros);
-	
 	while (!print_ok) {
-		printf ("\nEnter number to insert to the right: ");
+		printf ("\nEnter number to insert to the left: ");
 		scanf ("%d", &num);
 
 		LLISTA_insertDarrere (&numeros, num);
@@ -56,6 +52,25 @@ int main() {
 			print_ok = 1;
 		}
 
+	}
+
+	printf ("\nTEST 3: Delete something from the list.");
+	printf ("\nLet's delete two of them!\n");
+
+	LLISTA_elimina (&numeros);
+	LLISTA_mostrarElements (numeros);
+	LLISTA_elimina (&numeros);
+	LLISTA_mostrarElements (numeros);
+
+	printf ("\nTEST 4: Let's go to the end of the list and show the elements backwards!\n");
+	
+	LLISTA_vesFinal (&numeros);
+	LLISTA_retrocedeix (&numeros);
+	printf ("List of numbers backwards: \n");
+	while (!LLISTA_inici (numeros)) {
+		read = LLISTA_consulta (numeros);
+		printf ("%d ", read);
+		LLISTA_retrocedeix (&numeros);
 	}
 	
 	printf ("\n");
