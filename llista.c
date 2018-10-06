@@ -113,7 +113,8 @@ void LLISTA_insertDavant (Llista *l, int e) {
 				}
 				else {
 					LLISTA_avanca (l);
-					read = LLISTA_consulta(*l);
+					if (!LLISTA_final(*l))
+						read = LLISTA_consulta(*l);
 				}
 			}
 		}
