@@ -48,7 +48,8 @@ void LLISTA_insertDavant (Llista *l, int e) {
 
 void LLISTA_insertDarrere (Llista *l, int e) {
 	Node *aux;
-	if (l->pdi->sig == NULL) {
+// If PDI is pointing at first node, ERROR
+	if (l->pdi == l->pri) {
 		printf ("\nError, cannot insert behind node.\n");
 	}
 	else {
@@ -58,10 +59,10 @@ void LLISTA_insertDarrere (Llista *l, int e) {
 		}
 		else {
 			aux->e = e;
-			aux->sig = l->pdi->sig;
-			aux->ant = l->pdi;
-			l->pdi->sig->ant = aux;
-			l->pdi->sig = aux;
+			aux->sig = l->pdi;
+			aux->ant = l->pdi->ant;
+			l->pdi->ant->sig = aux;
+			l->pdi->ant = aux;
 		}
 	}
 }
