@@ -92,37 +92,39 @@ int LLISTA_buida (Llista l) {
 
 void LLISTA_insertDavant (Llista *l, int e) {
 	Node *aux;
-	int read, read2;
+	int read = 0, trobat = 0;
 
-	// If PDI is pointing at the last node, ERROR
-	if (l->pdi == l->ult) {
-		printf ("\nError, cannot insert the element in front.\n");
-	}	
+	aux = (Node*)malloc(sizeof(Node));
+	if (aux == NULL) {
+		printf ("\nError, cannot allocate memory for auxiliar node.\n");
+	}
 	else {
-		aux = (Node*)malloc(sizeof(Node));
-		if (aux == NULL) {
-			printf ("\nError, cannot allocate memory for auxiliar node.\n");
+		// Leave the PDI before the node that has a larger integer as element
+		if (LLISTA_buida (*l)) {
+			l->pdi = l->pri;
 		}
 		else {
 			LLISTA_vesInici (l);
 			read = LLISTA_consulta (*l);
-			LLISTA_avanca (l);
-			if (LLISTA_final(*l))
-				read2 = read;
-			else
-				read2 = LLISTA_consulta (*l);
-			while (read <= read2 && !LLISTA_final (*l)) {
-				LLISTA_avanca (l);
-				read = read2;
-				read2 = LLISTA_consulta(*l);
+			while (!LLISTA_final(l) && !trobat) {
+				if (e < read) {
+					trobat = 1;
+					LLISTA_retrocedeix (l);	
+				}
+				else {
+					LLISTA_avanca (l);
+					read = LLISTA_consulta(*l);
+				}
 			}
-			aux->e = e;
-			aux->sig = l->pdi->sig;
-			aux->ant = l->pdi;
-			l->pdi->sig->ant = aux;
-			l->pdi->sig = aux;
 		}
-	}
+		aux->e = e;
+		aux->sig = l->pdi->sig;
+		aux->ant = l->pdi;
+		l->pdi->sig->ant = aux;
+		l->pdi->sig = aux;
+		
+	}	
+	
 }
 
 void LLISTA_insertDarrere (Llista *l, int e) {
