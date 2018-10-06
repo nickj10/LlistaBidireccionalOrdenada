@@ -13,11 +13,12 @@ Llista LLISTA_crea() {
 			printf ("\nError, node cannot be created.");
 		}
 		else {
+			l.pdi = l.pri;
 			l.pri->sig = l.ult;
 			l.pri->ant = NULL;
 			l.ult->ant = l.pri;
 			l.ult->sig = NULL;
-			l.pdi = l.ult;
+			l.ult->ant = l.pri;
 		}
 	}
 
