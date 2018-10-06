@@ -26,12 +26,8 @@ int main() {
 	}
 	
 
-	printf ("\nTEST 2: Insert to the left (before PDI)\n");
+	printf ("\nTEST 2: Insert to the left (before PDI)");
 		
-	printf ("Enter number to insert to the right: ");
-	scanf ("%d", &num);
-	LLISTA_insertDarrere (&numeros, num);
-
 	while (!print_ok) {
 		printf ("\nEnter number to insert to the left: ");
 		scanf ("%d", &num);
@@ -57,6 +53,9 @@ int main() {
 	printf ("\nTEST 3: Delete something from the list.");
 	printf ("\nLet's delete two of them!\n");
 
+	LLISTA_retrocedeix (&numeros);
+	LLISTA_retrocedeix (&numeros);
+	LLISTA_retrocedeix (&numeros);
 	LLISTA_elimina (&numeros);
 	LLISTA_mostrarElements (numeros);
 	printf ("\n");
