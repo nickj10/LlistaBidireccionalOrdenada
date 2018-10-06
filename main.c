@@ -4,10 +4,10 @@
 int main() {
 	// Used for testing the Llista module
 	Llista numeros;
-	int num = 0, read = 0;
+	int num = 0;
 	int i = 0, count = 0;
 	int print_ok = 0;
-	char option;
+	char option, buff;
 
 	numeros = LLISTA_crea();
 
@@ -24,17 +24,9 @@ int main() {
 		i++;
 	}
 	
-	i = 0;	
-	LLISTA_vesInici (&numeros);
-	while (!LLISTA_final(numeros)) {
-		read = LLISTA_consulta(numeros);
-		printf ("List of numbers: ");
-		printf ("%d ", read);
-		LLISTA_avanca(&numeros);
-		i++;
-	}
+	LLISTA_mostrarElements (numeros);
 
-	printf ("\nTEST 2: Insert to the right (after PDI)"\n);
+	printf ("\nTEST 2: Insert to the right (after PDI)\n");
 		
 	while (!print_ok) {
 		printf ("Enter number to insert to the right: ");
@@ -42,6 +34,7 @@ int main() {
 
 		LLISTA_insertDarrere (&numeros, num);
 		
+		scanf ("%c", &buff);	
 		printf ("Do you want to enter another number? [Y/N] ");
 		scanf ("%c", &option);
 		if (option == 'Y' || option == 'y') {
@@ -52,6 +45,8 @@ int main() {
 		}
 
 	}
+
+	LLISTA_mostrarElements (numeros);
 
 	// Destroy the list
 	LLISTA_destrueix (&numeros);

@@ -1,4 +1,4 @@
-all: exercici1.exe
+all: exercici1
 	
 main.o: main.c llista.h
 	gcc -c main.c
