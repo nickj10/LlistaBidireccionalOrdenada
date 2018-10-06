@@ -11,26 +11,26 @@ int main() {
 
 	numeros = LLISTA_crea();
 
-	printf ("TEST 1: Inserting to the left (before PDI)");	
+	printf ("TEST 1: Inserting to the right (after PDI)");
 	printf ("\nHow many numbers do you want to enter? ");
 	scanf ("%d", &count);
 		
 	while (i < count) {
-		printf ("Enter an integer: ");
+		printf ("\nEnter an integer: ");
 		scanf ("%d", &num);
 
 		// Insert the number entered by user to the list of numbers
 		LLISTA_insertDavant (&numeros, num);
+		LLISTA_mostrarElements (numeros);
 		i++;
 	}
 	
-	LLISTA_mostrarElements (numeros);
 
 	printf ("\nTEST 2: Insert to the right (after PDI)\n");
 		
 	printf ("Enter number to insert to the right: ");
 	scanf ("%d", &num);
-	LLISTA_insertDarrere (&numeros, num);
+	LLISTA_insertDavant (&numeros, num);
 
 	//printf ("\nCorrect, we cannot add another element to the list because PDI is at the start of the list. Move forward twice.\n");
 	//LLISTA_avanca (&numeros);
