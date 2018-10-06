@@ -106,7 +106,7 @@ void LLISTA_insertDavant (Llista *l, int e) {
 		else {
 			LLISTA_vesInici (l);
 			read = LLISTA_consulta (*l);
-			while (!LLISTA_final(l) && !trobat) {
+			while (!LLISTA_final(*l) && !trobat) {
 				if (e < read) {
 					trobat = 1;
 					LLISTA_retrocedeix (l);	
