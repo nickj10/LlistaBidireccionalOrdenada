@@ -13,11 +13,12 @@ Llista LLISTA_crea() {
 			printf ("\nError, node cannot be created.");
 		}
 		else {
+			l.pdi = l.pri;
 			l.pri->sig = l.ult;
 			l.pri->ant = NULL;
 			l.ult->ant = l.pri;
 			l.ult->sig = NULL;
-			l.pdi = l.ult;
+			l.ult->ant = l.pri;
 		}
 	}
 
@@ -26,30 +27,10 @@ Llista LLISTA_crea() {
 
 void LLISTA_insertDavant (Llista *l, int e) {
 	Node *aux;
-	if (l->pdi->ant == NULL) {
+	// If PDI is pointing at the last node, ERROR
+	if (l->pdi == l->ult) {
 		printf ("\nError, cannot insert the element in front.\n");
 	}	
-	else {
-		aux = (Node*)malloc(sizeof(Node));
-		if (aux == NULL) {
-			printf ("\nError, cannot allocate memory for auxiliar node.\n");
-		}
-		else {
-			aux->e = e;
-			aux->sig = l->pdi->ant;
-			aux->ant = l->pdi->ant;
-			l->pdi->ant->sig = aux;
-			l->pdi->ant = aux;
-			//OBS: We don't have to mode PDI to maintain it
-		}
-	}
-}
-
-void LLISTA_insertDarrere (Llista *l, int e) {
-	Node *aux;
-	if (l->pdi->sig == NULL) {
-		printf ("\nError, cannot insert behind node.\n");
-	}
 	else {
 		aux = (Node*)malloc(sizeof(Node));
 		if (aux == NULL) {
@@ -61,6 +42,27 @@ void LLISTA_insertDarrere (Llista *l, int e) {
 			aux->ant = l->pdi;
 			l->pdi->sig->ant = aux;
 			l->pdi->sig = aux;
+		}
+	}
+}
+
+void LLISTA_insertDarrere (Llista *l, int e) {
+	Node *aux;
+// If PDI is pointing at first node, ERROR
+	if (l->pdi == l->pri) {
+		printf ("\nError, cannot insert behind node.\n");
+	}
+	else {
+		aux = (Node*)malloc(sizeof(Node));
+		if (aux == NULL) {
+			printf ("\nError, cannot allocate memory for auxiliar node.\n");
+		}
+		else {
+			aux->e = e;
+			aux->sig = l->pdi;
+			aux->ant = l->pdi->ant;
+			l->pdi->ant->sig = aux;
+			l->pdi->ant = aux;
 		}
 	}
 }
