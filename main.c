@@ -59,13 +59,13 @@ int main() {
 
 	LLISTA_elimina (&numeros);
 	LLISTA_mostrarElements (numeros);
+	printf ("\n");
 	LLISTA_elimina (&numeros);
 	LLISTA_mostrarElements (numeros);
 
 	printf ("\nTEST 4: Let's go to the end of the list and show the elements backwards!\n");
 	
 	LLISTA_vesFinal (&numeros);
-	LLISTA_retrocedeix (&numeros);
 	printf ("List of numbers backwards: \n");
 	while (!LLISTA_inici (numeros)) {
 		read = LLISTA_consulta (numeros);
