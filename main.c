@@ -32,9 +32,9 @@ int main() {
 	scanf ("%d", &num);
 	LLISTA_insertDarrere (&numeros, num);
 
-	printf ("\nCorrect, we cannot add another element to the list because PDI is at the start of the list. Move forward twice.\n");
-	LLISTA_avanca (&numeros);
-	LLISTA_avanca (&numeros);
+	//printf ("\nCorrect, we cannot add another element to the list because PDI is at the start of the list. Move forward twice.\n");
+	//LLISTA_avanca (&numeros);
+	//LLISTA_avanca (&numeros);
 	
 	while (!print_ok) {
 		printf ("\nEnter number to insert to the right: ");
