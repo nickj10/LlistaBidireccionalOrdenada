@@ -6,10 +6,13 @@ int main() {
 	Llista numeros;
 	int num = 0, read = 0;
 	int i = 0, count = 0;
+	int print_ok = 0;
+	char option;
 
 	numeros = LLISTA_crea();
-	
-	printf ("How many numbers do you want to enter? ");
+
+	printf ("TEST 1: Inserting to the left (before PDI)");	
+	printf ("\nHow many numbers do you want to enter? ");
 	scanf ("%d", &count);
 		
 	while (i < count) {
@@ -25,11 +28,31 @@ int main() {
 	LLISTA_vesInici (&numeros);
 	while (!LLISTA_final(numeros)) {
 		read = LLISTA_consulta(numeros);
-		printf ("Num %d: %d\n", i+1, read);
+		printf ("List of numbers: ");
+		printf ("%d ", read);
 		LLISTA_avanca(&numeros);
 		i++;
 	}
-	
+
+	printf ("\nTEST 2: Insert to the right (after PDI)"\n);
+		
+	while (!print_ok) {
+		printf ("Enter number to insert to the right: ");
+		scanf ("%d", &num);
+
+		LLISTA_insertDarrere (&numeros, num);
+		
+		printf ("Do you want to enter another number? [Y/N] ");
+		scanf ("%c", &option);
+		if (option == 'Y' || option == 'y') {
+			print_ok = 0;
+		}
+		else {
+			print_ok = 1;
+		}
+
+	}
+
 	// Destroy the list
 	LLISTA_destrueix (&numeros);
 
