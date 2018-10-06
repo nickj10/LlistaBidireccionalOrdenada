@@ -147,9 +147,9 @@ void LLISTA_mostrarElements (Llista l) {
 	int read = 0;
 
 	LLISTA_vesInici (&l);
+	printf ("List of numbers: ");
 	while (!LLISTA_final(l)) {
 		read = LLISTA_consulta(l);
-		printf ("List of numbers: ");
 		printf ("%d ", read);
 		LLISTA_avanca(&l);
 	}
