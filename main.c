@@ -61,6 +61,7 @@ int main() {
 	printf ("\n");
 	LLISTA_elimina (&numeros);
 	LLISTA_mostrarElements (numeros);
+	printf ("\n");	
 
 	printf ("\nTEST 4: Let's go to the end of the list and show the elements backwards!\n");
 	
