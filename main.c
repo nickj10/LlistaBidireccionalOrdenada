@@ -26,12 +26,8 @@ int main() {
 	}
 	
 
-	printf ("\nTEST 2: Insert to the left (before PDI)\n");
+	printf ("\nTEST 2: Insert to the left (before PDI)");
 		
-	printf ("Enter number to insert to the right: ");
-	scanf ("%d", &num);
-	LLISTA_insertDarrere (&numeros, num);
-
 	while (!print_ok) {
 		printf ("\nEnter number to insert to the left: ");
 		scanf ("%d", &num);
@@ -54,12 +50,17 @@ int main() {
 
 	}
 
-	printf ("\nTEST 3: Delete something from the list.");
-	printf ("\nLet's delete two of them!\n");
+	printf ("\nTEST 3: Delete something from the list.\n");
+	printf ("Let's delete two of them! But first, we should try to go back 3 times.\n");
 
+	// Go back 3 times
+	LLISTA_retrocedeix (&numeros);
+	LLISTA_retrocedeix (&numeros);
+	LLISTA_retrocedeix (&numeros);
+
+	// Remove the nodes and show the elements of the list after removal of node
 	LLISTA_elimina (&numeros);
 	LLISTA_mostrarElements (numeros);
-	printf ("\n");
 	LLISTA_elimina (&numeros);
 	LLISTA_mostrarElements (numeros);
 
@@ -71,9 +72,7 @@ int main() {
 		read = LLISTA_consulta (numeros);
 		printf ("%d ", read);
 		LLISTA_retrocedeix (&numeros);
-	}
-	
-	printf ("\n");
+	}	
 
 	// Destroy the list
 	LLISTA_destrueix (&numeros);
