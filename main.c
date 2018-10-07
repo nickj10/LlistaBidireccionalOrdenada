@@ -53,9 +53,12 @@ int main() {
 	printf ("\nTEST 3: Delete something from the list.\n");
 	printf ("Let's delete two of them! But first, we should try to go back 3 times.\n");
 
+	// Go back 3 times
 	LLISTA_retrocedeix (&numeros);
 	LLISTA_retrocedeix (&numeros);
 	LLISTA_retrocedeix (&numeros);
+
+	// Remove the nodes and show the elements of the list after removal of node
 	LLISTA_elimina (&numeros);
 	LLISTA_mostrarElements (numeros);
 	LLISTA_elimina (&numeros);
