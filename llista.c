@@ -310,4 +310,5 @@ void LLISTA_mostrarElements (Llista l) {
 		printf ("%d ", read);
 		LLISTA_avanca(&l);
 	}
+	printf ("\n");
 }
