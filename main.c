@@ -1,3 +1,14 @@
+/*********************************************************
+ *
+ * @Purpose: This file contains the main where the tests
+ *     	are implemented. In here, we can see the proper 
+ *	functioning of the Llista module
+ * @Autor: Nicole Marie Jimenez Burayag
+ * @Data creacio: 01/10/2018
+ * @Data ultima modificacio: 07/10/2018
+ * 
+ ********************************************************/
+
 #include <stdio.h>
 #include "llista.h"
 
