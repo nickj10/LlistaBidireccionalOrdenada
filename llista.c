@@ -2,7 +2,8 @@
 
 Llista LLISTA_crea() {
 	Llista l;
-	
+
+	// Create two "ghost" nodes that will represent the first and last node	
 	l.pri = (Node*)malloc(sizeof(Node));
 	if (l.pri == NULL) {
 		printf ("\n Error, node cannot be created.");
@@ -13,6 +14,7 @@ Llista LLISTA_crea() {
 			printf ("\nError, node cannot be created.");
 		}
 		else {
+			// PDI will be pointing at the first node when the list is created
 			l.pdi = l.pri;
 			l.pri->sig = l.ult;
 			l.pri->ant = NULL;
@@ -28,6 +30,7 @@ Llista LLISTA_crea() {
 int LLISTA_consulta (Llista l) {
 	int e;
 	
+	// Ghost nodes do not have elements. Therefore, cannot be consulted
 	if (l.pdi == l.pri || l.pdi == l.ult) {
 		e = -1;
 		printf ("\nError, cannot get the element inside the node.\n");
@@ -40,10 +43,12 @@ int LLISTA_consulta (Llista l) {
 
 void LLISTA_elimina (Llista *l) {
 	Node *aux; 
+	// Ghost nodes cannod be removed from the list
 	if (l->pdi == l->pri || l->pdi == l->ult) {
 		printf ("\nError, cannot delete node.\n"); 
 	}
 	else {
+		// Removes the node where PDI is pointing at
 		aux = l->pdi; 
 		aux->ant->sig = aux->sig; 
 		aux->sig->ant = aux->ant;
@@ -53,19 +58,23 @@ void LLISTA_elimina (Llista *l) {
 }
 
 void LLISTA_avanca (Llista *l) {
+	// We cannot go beyond the last node
 	if (l->pdi == l->ult) { 
 		printf ("\nError, cannot move forward.\n"); 
 	} 
 	else {
+		// PDI will be pointing at the next node
 		l->pdi = l->pdi->sig; 
 	}
 }
 
 void LLISTA_retrocedeix (Llista *l) {
+	// We cannot go beyond the first node. That is the limit.
 	if (l->pdi == l->pri) {
 		printf ("\nError,cannot move backwards.\n");
 	}
 	else {
+		// PDI will be pointing at the node before that
 		l->pdi=l->pdi->ant;
 	}
 }
@@ -106,6 +115,8 @@ void LLISTA_insertDavant (Llista *l, int e) {
 		else {
 			LLISTA_vesInici (l);
 			read = LLISTA_consulta (*l);
+
+			// Keep checking if we have reached the end of the list
 			while (!LLISTA_final(*l) && !trobat) {
 				if (e < read) {
 					trobat = 1;
@@ -116,12 +127,14 @@ void LLISTA_insertDavant (Llista *l, int e) {
 					if (!LLISTA_final(*l))
 						read = LLISTA_consulta(*l);
 					else {
+						// Reaching the end means e is the largest number
 						LLISTA_retrocedeix (l);
 						trobat = 1;
 					}
 				}
 			}
 		}
+		// Insert the node to the right of PDI
 		aux->e = e;
 		aux->sig = l->pdi->sig;
 		aux->ant = l->pdi;
@@ -148,6 +161,7 @@ void LLISTA_insertDarrere (Llista *l, int e) {
 		else {
 			LLISTA_vesInici (l);
 			read = LLISTA_consulta (*l);
+			// Keep checking if we have reached the end of the list
 			while (!LLISTA_final(*l) && !trobat) {
 				if (e < read) {
 					trobat = 1;
@@ -157,11 +171,14 @@ void LLISTA_insertDarrere (Llista *l, int e) {
 					if (!LLISTA_final(*l))
 						read = LLISTA_consulta(*l);
 					else {
+						// Reaching the end means e is the largest number
+						// In this case, PDI is pointing at the last ghost node
 						trobat = 1;
 					}
 				}
 			}
 		}
+		// Insert the node to the left of of PDI
 		aux->e = e;
 		aux->sig = l->pdi;
 		aux->ant = l->pdi->ant;
@@ -172,18 +189,22 @@ void LLISTA_insertDarrere (Llista *l, int e) {
 
 void LLISTA_destrueix (Llista *l) {
 	Node *aux;
+	// Keep deleting nodes until all nodes have been removed
 	while (l->pri != NULL) {
 		aux = l->pri;
 		l->pri = l->pri->sig;
 		free (aux);
 	}
+
+	// Put the ghost nodes as NULL
 	l->ult = NULL;
 	l->pdi = NULL;
 }
 
 void LLISTA_mostrarElements (Llista l) {
 	int read = 0;
-
+	
+	// Starting from the first non-ghost node, consult and print elements on the screen
 	LLISTA_vesInici (&l);
 	printf ("List of numbers: ");
 	while (!LLISTA_final(l)) {
