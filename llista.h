@@ -1,3 +1,13 @@
+/*********************************************************
+ *
+ * @Purpose: This file contains the structs needed and prototypes of the
+ *	functions for the Sorted Bidirectional Linked List.
+ * @Autor: Nicole Marie Jimenez Burayag
+ * @Data creacio: 01/10/2018
+ * @Data ultima modificacio: 07/10/2018
+ * 
+ ********************************************************/
+
 #ifndef _LLISTA_H
 #define _LLISTA_H
 
