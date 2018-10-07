@@ -50,18 +50,16 @@ int main() {
 
 	}
 
-	printf ("\nTEST 3: Delete something from the list.");
-	printf ("\nLet's delete two of them!\n");
+	printf ("\nTEST 3: Delete something from the list.\n");
+	printf ("Let's delete two of them! But first, we should try to go back 3 times.\n");
 
 	LLISTA_retrocedeix (&numeros);
 	LLISTA_retrocedeix (&numeros);
 	LLISTA_retrocedeix (&numeros);
 	LLISTA_elimina (&numeros);
 	LLISTA_mostrarElements (numeros);
-	printf ("\n");
 	LLISTA_elimina (&numeros);
 	LLISTA_mostrarElements (numeros);
-	printf ("\n");	
 
 	printf ("\nTEST 4: Let's go to the end of the list and show the elements backwards!\n");
 	
@@ -71,9 +69,7 @@ int main() {
 		read = LLISTA_consulta (numeros);
 		printf ("%d ", read);
 		LLISTA_retrocedeix (&numeros);
-	}
-	
-	printf ("\n");
+	}	
 
 	// Destroy the list
 	LLISTA_destrueix (&numeros);
