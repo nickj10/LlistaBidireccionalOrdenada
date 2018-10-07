@@ -1,5 +1,12 @@
 #include "llista.h"
 
+/*******************
+*
+* @Purpose: Create the bidirectional linked list
+* @Parameters: -
+* @Return: Returns an empty  bidirectional linked list
+*
+*******************/
 Llista LLISTA_crea() {
 	Llista l;
 
@@ -27,6 +34,13 @@ Llista LLISTA_crea() {
 	return l;
 }
 
+/*******************
+*
+* @Purpose: Gets the value of the element in the node where PDI is pointing at
+* @Parameters: l = bidirectional linked list
+* @Return: Returns an integer which is the value of the element
+*
+*******************/
 int LLISTA_consulta (Llista l) {
 	int e;
 	
@@ -41,6 +55,13 @@ int LLISTA_consulta (Llista l) {
 	return e;
 }
 
+/*******************
+*
+* @Purpose: Removes the node where PDI is pointing at
+* @Parameters: l = bidirectional linked list
+* @Return: -
+*
+*******************/
 void LLISTA_elimina (Llista *l) {
 	Node *aux; 
 	// Ghost nodes cannod be removed from the list
@@ -57,6 +78,13 @@ void LLISTA_elimina (Llista *l) {
 	}
 }
 
+/*******************
+*
+* @Purpose: Points PDI to the next node
+* @Parameters: l = bidirectional linked list
+* @Return: -
+*
+*******************/
 void LLISTA_avanca (Llista *l) {
 	// We cannot go beyond the last node
 	if (l->pdi == l->ult) { 
@@ -68,6 +96,13 @@ void LLISTA_avanca (Llista *l) {
 	}
 }
 
+/*******************
+*
+* @Purpose: Points PDI to the node before it
+* @Parameters: l = bidirectional linked list
+* @Return: -
+*
+*******************/
 void LLISTA_retrocedeix (Llista *l) {
 	// We cannot go beyond the first node. That is the limit.
 	if (l->pdi == l->pri) {
@@ -79,26 +114,68 @@ void LLISTA_retrocedeix (Llista *l) {
 	}
 }
 
+/*******************
+*
+* @Purpose: Go to the start of the list
+* @Parameters: l = bidirectional linked list
+* @Return: -
+*
+*******************/
 void LLISTA_vesInici (Llista *l) {
 	l->pdi = l->pri->sig;
 }
 
+/*******************
+*
+* @Purpose: Go to the end of the list
+* @Parameters: l = bidirectional linked list
+* @Return: -
+*
+*******************/
 void LLISTA_vesFinal (Llista *l) {
 	l->pdi = l->ult->ant;
 }
 
+/*******************
+*
+* @Purpose: Checks if PDI is at the start of the list
+* @Parameters: l = bidirectional linked list
+* @Return: Returns an integer. 1 for TRUE, 0 for FALSE
+*
+*******************/
 int LLISTA_inici (Llista l) {
 	return l.pdi == l.pri; 
 }
 
+/*******************
+*
+* @Purpose: Checks if PDI is at the end of the list
+* @Parameters: l = bidirectional linked list
+* @Return: Returns an integer. 1 for TRUE, 0 for FALSE
+*
+*******************/
 int LLISTA_final (Llista l) {
 	return l.pdi == l.ult;
 }
 
+/*******************
+*
+* @Purpose: Checks if the list is empty
+* @Parameters: l = bidirectional linked list
+* @Return: Returns an integer. 1 for TRUE, 0 for FALSE
+*
+*******************/
 int LLISTA_buida (Llista l) {
 	return l.pri->sig == l.ult;
 }
 
+/*******************
+*
+* @Purpose: Insert a node to the right of PDI in a sorted manner (min to max)
+* @Parameters: l = bidirectional linked list
+* @Return: -
+*
+*******************/
 void LLISTA_insertDavant (Llista *l, int e) {
 	Node *aux;
 	int read = 0, trobat = 0;
@@ -145,6 +222,13 @@ void LLISTA_insertDavant (Llista *l, int e) {
 	
 }
 
+/*******************
+*
+* @Purpose: Insert a node to the left of PDI in a sorted manner (min to max)
+* @Parameters: l = bidirectional linked list
+* @Return: -
+*
+*******************/
 void LLISTA_insertDarrere (Llista *l, int e) {
 	Node *aux;
 	int read = 0, trobat = 0;
@@ -187,6 +271,13 @@ void LLISTA_insertDarrere (Llista *l, int e) {
 	}	
 }
 
+/*******************
+*
+* @Purpose: Destroys the list by removing all nodes
+* @Parameters: l = bidirectional linked list
+* @Return: -
+*
+*******************/
 void LLISTA_destrueix (Llista *l) {
 	Node *aux;
 	// Keep deleting nodes until all nodes have been removed
@@ -201,6 +292,13 @@ void LLISTA_destrueix (Llista *l) {
 	l->pdi = NULL;
 }
 
+/*******************
+*
+* @Purpose: Prints all the elements of the linked list on the screen
+* @Parameters: l = bidirectional linked list
+* @Return: -
+*
+*******************/
 void LLISTA_mostrarElements (Llista l) {
 	int read = 0;
 	
